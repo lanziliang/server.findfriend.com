@@ -1,0 +1,31 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+module:testrunner
+
+GET     /                                       App.Index
+
+POST    /account/getinfo                 		Account.GetInfo
+POST    /account/signup                 	 	Account.Signup
+POST    /account/uploadavator          		    Account.UploadAvator
+POST    /account/getpersonalactivity          	Account.GetPersonalActivity
+GET  	/account/joinactivity          			Account.JoinActivity
+GET  	/account/canceljoinactivity          	Account.CancelJoinActivity
+GET    	/account/likeactivity          			Account.LikeActivity
+GET    	/account/cancellikeactivity          	Account.CancelLikeActivity
+
+POST	/activity/publish						Activity.Publish
+GET 	/activity/getpaginglist 				Activity.GetPagingList
+GET 	/activity/getnewlist 					Activity.GetNewList
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/*filepath                       Static.Serve("public")
+GET 	/upload/*filepath						Static.Serve("upload")
+
+# Catch all
+GET     /:controller/:action                    :controller.:action
+POST    /:controller/:action                    :controller.:action
